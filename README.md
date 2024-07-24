@@ -7,6 +7,5 @@ Este repositório contém um portfólio desenvolvido em Flask para exibir projet
 - **`templates/`**: Diretório que contém os arquivos HTML para as páginas do portfólio.
 - **`static/`**: Diretório para arquivos estáticos como CSS, JavaScript e imagens.
 - **`requirements.txt`**: Arquivo que lista as dependências do projeto.
-- **`config.py`**: Configurações do aplicativo Flask, como chaves secretas e configurações de ambiente.
 
 
