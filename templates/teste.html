@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Página Inicial</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/estilo.css') }}">
+</head>
+<body>
+    <h1>Bem-vindo à Análise de Dados</h1>
+    <form action="/analise" method="post">
+        <button type="submit">Executar Análise de Dados</button>
+    </form>
+</body>
+</html>

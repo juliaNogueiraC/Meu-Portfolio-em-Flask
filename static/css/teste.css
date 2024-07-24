@@ -1,0 +1,29 @@
+/* #1f7093;;
+ */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #1f7093;
+  margin: 0;
+  padding: 20px;
+}
+
+h1, h2 {
+  color: #lightyellow;
+}
+
+form {
+  margin-top: 20px;
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #lightblue;
+  color: #black;
+  border: none;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #005bb5;
+}

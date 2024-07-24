@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Resultados da Análise</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/estilo.css') }}">
+</head>
+<body>
+    <h1>Resultados da Análise de Dados</h1>
+    <h2>Estatísticas Descritivas</h2>
+    <div>{{ estatisticas|safe }}</div>
+    <h2>Gráfico</h2>
+    <img src="data:image/png;base64,{{ plot_url }}" alt="Gráfico de Salário por Nome">
+    <br>
+    <a href="/">Voltar à Página Inicial</a>
+</body>
+</html>
