@@ -99,13 +99,16 @@ footer {
     color: #fff;
     text-align: center;
     padding: 10px 0;
-    position: fixed;
+    position: relative; /* Altere de fixed para relative */
     width: 100%;
-    bottom: 0;
     transition: background-color 0.3s ease;
-    }
+}
 
 footer:hover {
     background-color: #0a2d6f; /* Azul mais escuro no hover */
 }
 
+/* Adiciona padding-bottom ao body para evitar que o rodapé cubra o conteúdo */
+body {
+    padding-bottom: px; /* Ajuste conforme necessário para corresponder à altura do rodapé */
+}

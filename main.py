@@ -1,18 +1,40 @@
-from flask import Flask, render_template
+import os
+
 import requests
+from flask import Flask, render_template
 
 app = Flask(__name__)
+my_secret = os.environ['token']
 
 @app.route('/')
 def index():
-    github_username = 'juliaNogueiraC'
-    response = requests.get(f'https://api.github.com/users/{github_username}/repos')
-    all_projects = response.json()
+    github_token = os.getenv('token')
+    headers = {'Authorization': f'token {github_token}'}
 
-    # Lista de repositórios que você deseja exibir
-    selected_repos = ['Analise-de-dados---Projeto-Segmento-Comercial-', 'Projeto-de-Analise-de-Demissoes-e-Ativos', 'AI-Previsoes-mercado-financeiro', 'Monitoramento-de-Chamados-com-Notificacoes-via-API-BOT-Telegram-e-Discord.', 'Analise-de-Dados-de-Motivos-de-Pedido-de-Desligamento', 'Previsao-de-Necessidade-de-Contratacoes', 'Analise-de-Desempenho-de-Funcionarios', 'Analise_de_Rotatividade_de_Funcionarios_Churn_Rate', 'Medical-Data-Visualizer', 'Sea-Level-Predictor', 'Banco-de-Dados-Departamento-Pessoal']  # Substitua pelos nomes dos seus repositórios
+    # Lista de URLs dos repositórios que você deseja exibir
+    selected_repos_urls = [
+        'https://github.com/juliaNogueiraC/Analise-de-dados---Projeto-Segmento-Comercial-', 
+        'https://github.com/juliaNogueiraC/Projeto-de-Analise-de-Demissoes-e-Ativos', 
+        'https://github.com/juliaNogueiraC/AI-Previsoes-mercado-financeiro', 
+        'https://github.com/juliaNogueiraC/Analise-de-Dados-de-Motivos-de-Pedido-de-Desligamento', 
+        'https://github.com/juliaNogueiraC/Previsao-de-Necessidade-de-Contratacoes', 
+        'https://github.com/juliaNogueiraC/Analise-de-Desempenho-de-Funcionarios',                 
+        'https://github.com/juliaNogueiraC/Analise_de_Rotatividade_de_Funcionarios_Churn_Rate', 
+        'https://github.com/juliaNogueiraC/Medical-Data-Visualizer', 
+        'https://github.com/juliaNogueiraC/Sea-Level-Predictor', 
+        'https://github.com/juliaNogueiraC/Banco-de-Dados-Departamento-Pessoal'
+    ]
 
-    projects = [repo for repo in all_projects if repo['name'] in selected_repos]
+    projects = []
+
+    for repo_url in selected_repos_urls:
+        repo_name = repo_url.split('/')[-1]
+        response = requests.get(f'https://api.github.com/repos/juliaNogueiraC/{repo_name}', headers=headers)
+        if response.status_code == 200:
+            projects.append(response.json())
+        else:
+            print(f'Erro ao obter o repositório: {repo_name}, Status Code: {response.status_code}')
+
     return render_template('index.html', projects=projects)
 
 if __name__ == '__main__':
