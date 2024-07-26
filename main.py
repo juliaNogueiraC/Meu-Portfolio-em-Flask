@@ -13,6 +13,7 @@ def index():
 
     # Lista de URLs dos repositórios que você deseja exibir
     selected_repos_urls = [
+        'https://github.com/juliaNogueiraC/Meu-Portfolio-em-Flask',
         'https://github.com/juliaNogueiraC/Analise-de-dados---Projeto-Segmento-Comercial-', 
         'https://github.com/juliaNogueiraC/Projeto-de-Analise-de-Demissoes-e-Ativos', 
         'https://github.com/juliaNogueiraC/AI-Previsoes-mercado-financeiro', 
@@ -37,5 +38,13 @@ def index():
 
     return render_template('index.html', projects=projects)
 
+@app.route('/contact')
+def about():
+    return render_template('contact.html')
+
+@app.route('/')
+def home():
+    return render_template('index.html')
+    
 if __name__ == '__main__':
     app.run(debug=True)
